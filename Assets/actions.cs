@@ -12,7 +12,7 @@ public class actions : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.UpArrow))
+		if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             
             //Send the message to the Animator to activate the trigger parameter named "Jump"
