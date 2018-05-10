@@ -21,6 +21,14 @@ public class actions : MonoBehaviour {
 //            anim.SetTrigger("leftStraightPunch");
 			anim.SetTrigger("rightStraightPunch");
         }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            
+            //Send the message to the Animator to activate the trigger parameter named "Jump"
+//            anim.SetTrigger("leftStraightPunch");
+			anim.SetTrigger("leftStraightPunch");
+        }
 	}
 
 	// void lfist_straight_punch(){
