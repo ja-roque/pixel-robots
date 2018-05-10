@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class actions : MonoBehaviour {
+public class ActionListener : MonoBehaviour {
 
 	Animator anim;
 	// Use this for initialization
