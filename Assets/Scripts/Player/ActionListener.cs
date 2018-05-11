@@ -5,33 +5,39 @@ using UnityEngine;
 public class ActionListener : MonoBehaviour {
 
 	Animator anim;
+	MouseSwipes swipe;
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();
+		swipe = new MouseSwipes();
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+		swipe.Swipe();
 
-		if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            
-            //Send the message to the Animator to activate the trigger parameter named "Jump"
-//            anim.SetTrigger("leftStraightPunch");
+		if (Input.GetKeyDown(KeyCode.UpArrow)){
 			anim.SetTrigger("rightStraightPunch");
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            
-            //Send the message to the Animator to activate the trigger parameter named "Jump"
-//            anim.SetTrigger("leftStraightPunch");
+        if (Input.GetKeyDown(KeyCode.DownArrow)){
 			anim.SetTrigger("leftStraightPunch");
         }
+
+        if (swipe.Swipe() == "rightSwipe"){
+        	anim.SetTrigger("rightSideHook");
+        }
+
+        if (swipe.Swipe() == "leftSwipe"){
+        	anim.SetTrigger("leftSideHook");
+        }
+
+        if (swipe.Swipe() == "upSwipe"){
+        	anim.SetTrigger("rightHook");
+        }
+
 	}
 
-	// void lfist_straight_punch(){
-	// 	 anim.SetTrigger("lfist_straight_punch");
-	// }
 }
