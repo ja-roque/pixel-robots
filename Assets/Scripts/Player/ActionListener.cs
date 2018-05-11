@@ -17,27 +17,28 @@ public class ActionListener : MonoBehaviour {
 	void Update () {
 
 		swipe.Swipe();
-
-		if (Input.GetKeyDown(KeyCode.UpArrow)){
-			anim.SetTrigger("rightStraightPunch");
-        }
-
-        if (Input.GetKeyDown(KeyCode.DownArrow)){
-			anim.SetTrigger("leftStraightPunch");
-        }
-
-        if (swipe.Swipe() == "rightSwipe"){
-        	anim.SetTrigger("rightSideHook");
-        }
-
-        if (swipe.Swipe() == "leftSwipe"){
-        	anim.SetTrigger("leftSideHook");
-        }
-
-        if (swipe.Swipe() == "upSwipe"){
-        	anim.SetTrigger("rightHook");
-        }
-
+		if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("attacking"))
+		{
+				if (Input.GetKeyDown(KeyCode.UpArrow)){
+					anim.SetTrigger("rightStraightPunch");
+		        }
+		
+		        if (Input.GetKeyDown(KeyCode.DownArrow)){
+					anim.SetTrigger("leftStraightPunch");
+		        }
+		
+		        if (swipe.Swipe() == "rightSwipe"){
+		        	anim.SetTrigger("rightSideHook");
+		        }
+		
+		        if (swipe.Swipe() == "leftSwipe"){
+		        	anim.SetTrigger("leftSideHook");
+		        }
+		
+		        if (swipe.Swipe() == "upSwipe"){
+		        	anim.SetTrigger("rightHook");
+		        }
+		}
 	}
 
 }
