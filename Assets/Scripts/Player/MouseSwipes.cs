@@ -10,13 +10,32 @@ public class MouseSwipes {
 	Vector2 firstPressPos;
 	Vector2 secondPressPos;
 	Vector2 currentSwipe;
-	 
-	public string Swipe()
-	{
+	Vector2 mousePosition;
+
+	InputResponse inputResponse = new InputResponse();
+
+	static Vector2 screenSize = new Vector2(Screen.width, Screen.height);
+	Vector2 screenCenterPoint = new Vector2(screenSize.x / 2, screenSize.y / 2);
+
+	public InputResponse Swipe()
+	{	
+
 	     if(Input.GetMouseButtonDown(0))
 	     {
 	         //save began touch 2d point
 	        firstPressPos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
+	        mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+
+	        Debug.Log(mousePosition);
+	        Debug.Log(new Vector2(Screen.width, Screen.height));
+
+	        if(mousePosition.x < screenCenterPoint.x){
+	        	inputResponse.Side = "left";
+	        } else{
+	        	inputResponse.Side = "right";
+	        }
+
+
 	     }
 	     if(Input.GetMouseButtonUp(0))
 	     {
@@ -31,26 +50,30 @@ public class MouseSwipes {
 	 
 	        //swipe upwards
 	        if(currentSwipe.y > 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
-	        {
-	            return "upSwipe";
+	        {	
+	        	inputResponse.Type = "upSwipe";
+	            return inputResponse;
 	        }
 	        //swipe down
 	        if(currentSwipe.y < 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
-	        {
-	            return "downSwipe";
+	        {	
+	            inputResponse.Type = "downSwipe";
+	            return inputResponse;
 	        }
 	        //swipe left
 	        if(currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
-	        {
-	            return "leftSwipe";
+	        {	
+	        	inputResponse.Type = "leftSwipe";
+	            return inputResponse;
 	        }
 	        //swipe right
 	        if(currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
-	        {
-	            return "rightSwipe";
+	        {	
+	        	inputResponse.Type = "rightSwipe";
+	            return inputResponse;
 	        }
 	    }
 
-	    return "none";
+	    return new InputResponse("none", "none");
 	}
 }
