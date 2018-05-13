@@ -6,6 +6,8 @@ public class TouchSwipes{
 
 	//inside class
 	Vector2 firstPressPos;
+	Vector2 firstPressPos2;
+
 	Vector2 secondPressPos;
 	Vector2 currentSwipe;
 
@@ -19,10 +21,30 @@ public class TouchSwipes{
 	     if(Input.touches.Length > 0)
 	     {
 	         Touch t = Input.GetTouch(0);
+
 	         if(t.phase == TouchPhase.Began)
 	         {
-	              //save began touch 2d point
-	             firstPressPos = new Vector2(t.position.x,t.position.y);
+
+	         	// Determine if it is a multitouch action
+	         	if (Input.touches.Length > 1){
+	         		Touch t2 = Input.GetTouch(1);
+	         		firstPressPos2 = new Vector2(t2.position.x,t2.position.y);	
+
+	         		Debug.Log(firstPressPos2);
+	        		Debug.Log(firstPressPos);
+
+	         		// Get positions of touch to block
+	         		if( ((screenCenterPoint.x / 2) < firstPressPos.x  && firstPressPos.x  > (screenCenterPoint.x / 2)*3) &&
+	         			((screenCenterPoint.x / 2) < firstPressPos2.x && firstPressPos2.x > (screenCenterPoint.x / 2)*3) &&
+	         			((screenCenterPoint.y / 2) < firstPressPos.y) &&
+	         			((screenCenterPoint.y / 2) < firstPressPos2.y)
+         				)
+	         		inputResponse.Type = "multiHoldTop";
+	         		return inputResponse;
+	         	}
+
+              	//save began touch 2d point
+	            firstPressPos = new Vector2(t.position.x,t.position.y);
 
 				if(firstPressPos.x < screenCenterPoint.x){
 					inputResponse.Side = "left";
@@ -47,25 +69,24 @@ public class TouchSwipes{
 	             {
 	                inputResponse.Type = "upSwipe";
 	            	return inputResponse;
-	             }
-	             //swipe down
-	             if(currentSwipe.y < 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
+	             } else if(currentSwipe.y < 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
 	             {
 	                inputResponse.Type = "downSwipe";
 	            	return inputResponse;
-	             }
-	             //swipe left
-	             if(currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+	             } else if(currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
 	             {
 	                inputResponse.Type = "leftSwipe";
 	            	return inputResponse;
-	             }
-	             //swipe right
-	             if(currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+	             } else if(currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
 	             {	                
 	                inputResponse.Type = "rightSwipe";
 	            	return inputResponse;
+	             } else {
+	             	inputResponse.Type = "tap";
+	             	return inputResponse;
 	             }
+
+
 	         }
 	     }
 

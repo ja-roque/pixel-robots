@@ -24,10 +24,7 @@ public class MouseSwipes {
 	     {
 	         //save began touch 2d point
 	        firstPressPos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
-	        mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-
-	        Debug.Log(mousePosition);
-	        Debug.Log(new Vector2(Screen.width, Screen.height));
+	        mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);	        
 
 	        if(mousePosition.x < screenCenterPoint.x){
 	        	inputResponse.Side = "left";
