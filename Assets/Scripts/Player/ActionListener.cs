@@ -18,6 +18,7 @@ public class ActionListener : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		touch.Swipe();
+		Debug.Log(touch.Swipe().Type);
 		// mouse.Swipe();
 
 		if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("attacking"))
@@ -46,12 +47,14 @@ public class ActionListener : MonoBehaviour {
 		        	anim.SetTrigger("leftHook");
 		        }
 
-		        if (touch.Swipe().Type == "multiHoldTop"){
+
+		}
+
+		if (touch.Swipe().Type == "multiHoldTop"){
 					anim.SetBool("highBlock", true);
 		        } else{
 		        	anim.SetBool("highBlock", false);
-		        }
-		}
+        }
 	}
 
 }
