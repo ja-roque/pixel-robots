@@ -18,40 +18,36 @@ public class ActionListener : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		touch.Swipe();
-		// mouse.Swipe();
+		
+		if (touch.Swipe().Type == "tap" && touch.Swipe().Side == "right"){
+			anim.SetTrigger("rightStraightPunch");
+        }
 
-		if (!anim.GetCurrentAnimatorStateInfo(0).IsTag("attacking"))
-		{
-				if (touch.Swipe().Type == "tap" && touch.Swipe().Side == "right"){
-					anim.SetTrigger("rightStraightPunch");
-		        }
-		
-		        if (touch.Swipe().Type == "tap" && touch.Swipe().Side == "left"){
-					anim.SetTrigger("leftStraightPunch");
-		        }
-		
-		        if (touch.Swipe().Type == "rightSwipe"){
-		        	anim.SetTrigger("rightSideHook");
-		        }
-		
-		        if (touch.Swipe().Type == "leftSwipe"){
-		        	anim.SetTrigger("leftSideHook");
-		        }
-		
-		        if (touch.Swipe().Type == "upSwipe" 
-		        	&& touch.Swipe().Side == "right"){
-		        	anim.SetTrigger("rightHook");
-		        } else if(mouse.Swipe().Type == "upSwipe" 
-	        		&& touch.Swipe().Side == "left") {
-		        	anim.SetTrigger("leftHook");
-		        }
+        if (touch.Swipe().Type == "tap" && touch.Swipe().Side == "left"){
+			anim.SetTrigger("leftStraightPunch");
+        }
 
-		        if (touch.Swipe().Type == "multiHoldTop"){
+        if (touch.Swipe().Type == "rightSwipe"){
+        	anim.SetTrigger("rightSideHook");
+        }
+
+        if (touch.Swipe().Type == "leftSwipe"){
+        	anim.SetTrigger("leftSideHook");
+        }
+
+        if (touch.Swipe().Type == "upSwipe" 
+        	&& touch.Swipe().Side == "right"){
+        	anim.SetTrigger("rightHook");
+        } else if(mouse.Swipe().Type == "upSwipe" 
+    		&& touch.Swipe().Side == "left") {
+        	anim.SetTrigger("leftHook");
+        }
+
+		if (touch.Swipe().Type == "multiHoldTop"){
 					anim.SetBool("highBlock", true);
 		        } else{
 		        	anim.SetBool("highBlock", false);
-		        }
-		}
+        }
 	}
 
 }
