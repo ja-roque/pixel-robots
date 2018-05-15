@@ -29,28 +29,35 @@ public class TouchSwipes{
 	         Touch t = Input.GetTouch(0);	
 
 	        if (Input.touches.Length > 1){
-	        		
+	        		Debug.Log( firstPressPos);
+	         		Debug.Log(firstPressPos2);
+
 	         		Touch t2 = Input.GetTouch(1);
 
 	         		// if(t.phase == TouchPhase.Stationary && t2.phase == TouchPhase.Stationary)
 	         		// {
+	         		firstPressPos = new Vector2(t.position.x,t.position.y);
 	         		firstPressPos2 = new Vector2(t2.position.x,t2.position.y);	
 
-	         	// 	Debug.Log(firstPressPos2);
-	         	// 	Debug.Log( firstPressPos);
+
+	         		
 	        		// Debug.Log((screenCenterPoint.x / 2));
 	        		// Debug.Log((screenCenterPoint.x / 2)*3);
 	        		// Debug.Log((screenCenterPoint.y / 2));
 
 	         		// Get positions of touch to block
-	         		if( 
-	         			
-	         			((screenCenterPoint.y) < firstPressPos.y) &&
-	         			((screenCenterPoint.y) < firstPressPos2.y)
-         				){
-		         			inputResponse.Type = "multiHoldTop";
-		         		}
-	         		// }
+	         		if( ((screenCenterPoint.y) < firstPressPos.y) &&
+	         			((screenCenterPoint.y) < firstPressPos2.y) )
+ 				  	{ 
+	         			inputResponse.Type = "multiHoldTop";
+	         		}
+
+	         		if( ((screenCenterPoint.y) > firstPressPos.y) &&
+	         			((screenCenterPoint.y) > firstPressPos2.y) )
+ 				  	{ 
+	         			inputResponse.Type = "multiHoldBot";
+	         		}
+
 	         		holding = true;
 	         		return inputResponse;
 
@@ -108,10 +115,11 @@ public class TouchSwipes{
 						return inputResponse;
 					}
 		        }
+
 	         }
-	         
+	     	    
 	     }
-	     Debug.Log(holding);
+
 	     return inputResponse;
 	}
 }

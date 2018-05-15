@@ -48,6 +48,12 @@ public class ActionListener : MonoBehaviour {
 		        } else{
 		        	anim.SetBool("highBlock", false);
         }
+
+        if (touch.Swipe().Type == "multiHoldBot"){
+					anim.SetBool("lowBlock", true);
+		        } else{
+		        	anim.SetBool("lowBlock", false);
+        }
 	}
 
 }
