@@ -37,10 +37,10 @@ public class ActionListener : MonoBehaviour {
 
         if (touch.Swipe().Type == "upSwipe" 
         	&& touch.Swipe().Side == "right"){
-        	anim.SetTrigger("rightHook");
+        	anim.SetTrigger("rightUppercut");
         } else if(mouse.Swipe().Type == "upSwipe" 
     		&& touch.Swipe().Side == "left") {
-        	anim.SetTrigger("leftHook");
+        	anim.SetTrigger("leftUppercut");
         }
 
 		if (touch.Swipe().Type == "multiHoldTop"){
