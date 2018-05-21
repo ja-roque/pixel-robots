@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionListener : MonoBehaviour {
-	Animator anim;
-	// Use this for initialization
+	Animator playerAnim;
+	Animator myAnim;
+
 	void Start () {
-
+		myAnim = this.GetComponent<Animator> ();
 	}
-
-	// Update is called once per frame
-	void Update () {
-
-	}
+		
 
 	void OnTriggerEnter (Collider col){
-		Debug.Log ("pega porque es gorda");
-		anim = col.gameObject.GetComponentInParent(typeof(Animator)) as Animator;
-		string clipInfo = anim.GetCurrentAnimatorClipInfo(0)[0].clip + "";
-//		if(clipInfo.Contains(left))
+
+		playerAnim = col.gameObject.GetComponentInParent(typeof(Animator)) as Animator;
+		string clipInfo = playerAnim.GetCurrentAnimatorClipInfo(0)[0].clip + "";
+
+		//check each name and set triggers
 	}
 }
