@@ -14,7 +14,7 @@ public class CollisionListener : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter (Collision col){
+	void OnTriggerEnter (Collider col){
 		Debug.Log ("pega porque es gorda");
 		anim = col.gameObject.GetComponentInParent(typeof(Animator)) as Animator;
 		string clipInfo = anim.GetCurrentAnimatorClipInfo(0)[0].clip + "";
