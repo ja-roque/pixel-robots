@@ -427,8 +427,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1238934853}
   - component: {fileID: 1238934852}
-  - component: {fileID: 1238934854}
   - component: {fileID: 1238934855}
+  - component: {fileID: 1238934854}
+  - component: {fileID: 1238934856}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -494,6 +495,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1238934856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1238934851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3293c547b85474def82153a970616577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  straightDamage: 2
+  sideDamage: 10
+  uppercutDamage: 14
+  attackType: none
+  attackSide: none
+  currentDamage: 0
 --- !u!1 &1256074219
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +765,7 @@ GameObject:
   - component: {fileID: 1553269366}
   m_Layer: 0
   m_Name: head
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -841,6 +859,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1614011592}
   - component: {fileID: 1614011593}
+  - component: {fileID: 1614011594}
   m_Layer: 0
   m_Name: Momotaro
   m_TagString: Untagged
@@ -884,6 +903,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1614011594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1614011591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed65dc42774c04a16a72d879b201a4c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackedSide: 
+  attackedType: 
+  damageWouldReceived: 0
 --- !u!1 &1836032367
 GameObject:
   m_ObjectHideFlags: 0

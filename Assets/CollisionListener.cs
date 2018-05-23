@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionListener : MonoBehaviour {
-	Animator playerAnim;
-	Animator myAnim;
+	EnemyBehavior myBehavior;
 
 	void Start () {
-		myAnim = this.GetComponent<Animator> ();
+		myBehavior = this.GetComponentInParent<EnemyBehavior> ();
 	}
 		
 
 	void OnTriggerEnter (Collider col){
 
-		playerAnim = col.gameObject.GetComponentInParent(typeof(Animator)) as Animator;
-		string clipInfo = playerAnim.GetCurrentAnimatorClipInfo(0)[0].clip + "";
-
-		//check each name and set triggers
+		PlayerDataManager playerData = col.transform.root.GetComponent<PlayerDataManager> ();
+		myBehavior.SetDamagedFlags (playerData.attackSide, playerData.attackType, playerData.currentDamage);
 	}
 }
