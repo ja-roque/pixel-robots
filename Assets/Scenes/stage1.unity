@@ -914,9 +914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed65dc42774c04a16a72d879b201a4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackedSide: 
-  attackedType: 
-  damageWouldReceived: 0
+  timeForNextAction: 0
+  minActionTime: 1
+  maxActionTime: 3
 --- !u!1 &1836032367
 GameObject:
   m_ObjectHideFlags: 0

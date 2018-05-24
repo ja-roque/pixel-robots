@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class BehaviorMomotaro : EnemyBehavior {
 	Random rand = new Random();
-	Animator anim;
-
 
 	// Use this for initialization
 	void Start () {
-		anim = GetComponent<Animator>();
 		InvokeRepeating("runBehavior", 3.0f, .50f);
+		timer = 0;
+		timeForNextAction = 3;
 	}
 
-	void StayIdle(){
-		anim.Play("Idle");
+	void Update(){
+
+		if (damageWouldReceived != 0) {
+			ReceiveDamage ();
+			PlayDamageAnimation ();
+			ClearDamageFlags ();
+
+		} else if (timer >= timeForNextAction) {
+			timer = 0;
+			timeForNextAction = Random.Range (minActionTime, maxActionTime);
+
+			runBehavior ();  //attack, taunt
+		}
+
+		if(!anim.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+			timer += Time.deltaTime;
 	}
 
 	void Attack(){
@@ -36,18 +49,11 @@ public class BehaviorMomotaro : EnemyBehavior {
 	}
 
 	void runBehavior(){
-		if(anim.GetCurrentAnimatorStateInfo(0).IsTag("attack")){
+		if(anim.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
 			return;
-		}
-
-		float random = Random.Range( 0.0f, 1.0f );
-		Debug.Log(random);
-
-		if(random > 0.2f ){
-			Attack();
-		} else{
-			StayIdle();
-		}
+		
+		//CHANCE FOR TAUNT HERE?
+		Attack();
 	}
 
 	void RandAttack(){
