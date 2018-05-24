@@ -13,10 +13,17 @@ public class BehaviorMomotaro : EnemyBehavior {
 	void Update(){
 
 		if (damageWouldReceived != 0) {
-			ReceiveDamage ();
-			PlayDamageAnimation ();
-			ClearDamageFlags ();
 
+			string clipName = anim.GetCurrentAnimatorClipInfo (0) [0].clip.name;
+
+			if (clipName.ToLower ().Contains ("straight")) {
+				ReceiveDamage ();
+				ClearDamageFlags ();
+			} else {
+				ReceiveDamage ();
+				PlayDamageAnimation ();
+				ClearDamageFlags ();
+			}
 		}
 	}
 

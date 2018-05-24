@@ -763,6 +763,7 @@ GameObject:
   - component: {fileID: 1553269364}
   - component: {fileID: 1553269365}
   - component: {fileID: 1553269366}
+  - component: {fileID: 1553269367}
   m_Layer: 0
   m_Name: head
   m_TagString: enemy
@@ -850,6 +851,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c5bad83d8b04160975a43cf2d816e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1553269367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1553269362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99669badb7bc4b08bf4e42e4d8524ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorFlashDuration: 0.1
 --- !u!1 &1614011591
 GameObject:
   m_ObjectHideFlags: 0
