@@ -14,9 +14,13 @@ public class EnemyBehavior : MonoBehaviour {
 	[SerializeField] protected float maxActionTime = 1;
 
 	protected Animator anim;
+	protected Animator playerAnim;
+	protected GameObject player;
 
 	void Awake (){
-		anim = GetComponent<Animator> ();
+		player = GameObject.Find("Player");
+		anim 	   = GetComponent<Animator> ();
+		playerAnim = player.GetComponent<Animator>();
 	}
 
 	public void SetDamagedFlags(string side, string type, float damage){

@@ -8,8 +8,6 @@ public class BehaviorMomotaro : EnemyBehavior {
 	// Use this for initialization
 	void Start () {
 		InvokeRepeating("runBehavior", 3.0f, .50f);
-		timer = 0;
-		timeForNextAction = 3;
 	}
 
 	void Update(){
@@ -19,41 +17,38 @@ public class BehaviorMomotaro : EnemyBehavior {
 			PlayDamageAnimation ();
 			ClearDamageFlags ();
 
-		} else if (timer >= timeForNextAction) {
-			timer = 0;
-			timeForNextAction = Random.Range (minActionTime, maxActionTime);
-
-			runBehavior ();  //attack, taunt
 		}
-
-		if(!anim.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
-			timer += Time.deltaTime;
 	}
 
 	void Attack(){
 		// Is player blocking?
-		if(true){
+		if(PlayerIsBlocking()["status"]){
 
 			// Will read blocking?
-			if(false){
+			if(true){
 				// Is player blocking top or bot?
-				if(true){
-					AttackTop();
-				} else {
+				if(PlayerIsBlocking()["high"]){
 					AttackBot();
+					return;
+				} else {
+					AttackTop();
+					return;
 				}
-			}
-
-			RandAttack();
+			}			
 		}
+
+		RandAttack();
 	}
 
 	void runBehavior(){
 		if(anim.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
 			return;
-		
-		//CHANCE FOR TAUNT HERE?
-		Attack();
+	 
+	    if(Random.Range( 0.0f, 1.0f ) > 0.2f ){ 
+	      Attack(); 
+	    } else{ 
+	      StayIdle(); 
+	    } 
 	}
 
 	void RandAttack(){
@@ -70,11 +65,35 @@ public class BehaviorMomotaro : EnemyBehavior {
 		
 	}
 
+ 	void StayIdle(){ 
+    	anim.Play("Idle");
+	}
+
 	void AttackTop(){
-		
+		anim.SetTrigger("rightUpSwing");
 	}
 
 	void AttackBot(){
+		anim.SetTrigger("leftCrouchPunch");
+	}
+
+	Dictionary<string, bool> PlayerIsBlocking(){
+		// Might be cleaner to separte into different functions.
+		var blockingStatus 			= new Dictionary<string, bool>();
+		blockingStatus["status"]	= false;
+		blockingStatus["high"] 		= false;
+
+		if 	(playerAnim.GetBool("highBlock") ){
+			blockingStatus["status"] 	= true;
+			blockingStatus["high"] 		= true;
+			return blockingStatus;
+		}
+		else if (playerAnim.GetBool("lowBlock")) {
+			blockingStatus["status"] 	= true;
+			blockingStatus["high"] 		= false;
+			return blockingStatus;
+		}
 		
+		return blockingStatus;
 	}
 }

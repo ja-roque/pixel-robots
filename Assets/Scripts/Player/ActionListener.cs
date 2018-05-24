@@ -23,7 +23,8 @@ public class ActionListener : MonoBehaviour {
 			anim.SetTrigger("rightStraightPunch");
         }
 
-		if (Input.GetKeyDown("space")){
+		// if (Input.GetKeyDown("space")){
+		if (touch.Swipe().Type == "tap" && touch.Swipe().Side == "left"){
 			anim.SetTrigger("leftStraightPunch");
         }
 
