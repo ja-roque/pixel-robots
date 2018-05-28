@@ -11,7 +11,6 @@ public class SpriteEffector : MonoBehaviour {
 
 	void Start(){
 		spriteRenderer = GetComponent<SpriteRenderer> ();
-		Debug.Log (spriteRenderer);
 	}
 
 	//Flicker (sprite visible and invisible)

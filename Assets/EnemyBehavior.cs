@@ -17,6 +17,8 @@ public class EnemyBehavior : MonoBehaviour {
 	protected Animator playerAnim;
 	protected GameObject player;
 
+	protected Health enemyHealth = new Health();
+
 	void Awake (){
 		player = GameObject.Find("Player");
 		anim 	   = GetComponent<Animator> ();
@@ -53,7 +55,7 @@ public class EnemyBehavior : MonoBehaviour {
 			anim.SetTrigger ("damagedBySide");
 	}
 
-	protected void ReceiveDamage(){
-		Debug.Log ("lose health here");
+	protected void ReceiveDamage(float damage = 0){
+		enemyHealth.ApplyDamage(damage);		
 	}
 }
