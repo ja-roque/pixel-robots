@@ -13,6 +13,9 @@ public class PlayerDataManager : MonoBehaviour {
 
 	[HideInInspector] public float currentDamage;
 
+	public static Health playerHealth = new Health();
+	public float health;
+
 	Animator anim;
 
 	// Use this for initialization
@@ -22,6 +25,8 @@ public class PlayerDataManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		health = playerHealth.value;
+
 		string clipName = anim.GetCurrentAnimatorClipInfo (0) [0].clip.name;
 
 		if (clipName.ToLower ().Contains ("left")) {
