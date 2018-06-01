@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCollisionListener : MonoBehaviour {
 
+	public bool blocking = false;
+
 	protected Animator anim;
 	void Start () {
 		anim = GetComponentInParent<Animator>();
@@ -11,14 +13,18 @@ public class PlayerCollisionListener : MonoBehaviour {
 		
 
 	void OnTriggerEnter (Collider col){
-		Debug.Log(name);
-		if(name == "head"){
-			anim.Play("HighDamage");
-			Debug.Log("Top");
+		Debug.Log (this.gameObject.name);
+		if (!blocking) {
+			if (name == "head") {
+				anim.Play ("HighDamage");
+//				Debug.Log ("Top");
+			} else {
+				anim.Play ("HighDamage");
+//				Debug.Log ("Low");
+			}
 		} else {
-			anim.Play("HighDamage");
-			Debug.Log("Low");
+			anim.SetTrigger ("blockConfirm");
+			Debug.Log ("blocked!");
 		}
-	
 	}
 }
