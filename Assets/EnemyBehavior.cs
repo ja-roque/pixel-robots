@@ -13,16 +13,18 @@ public class EnemyBehavior : MonoBehaviour {
 	[SerializeField] protected float minActionTime = 1;
 	[SerializeField] protected float maxActionTime = 1;
 
-	protected Animator anim;
-	protected Animator playerAnim;
-	protected GameObject player;
+	protected Animator 		anim;
+	protected AudioSource 	SFX;
+	protected Animator 		playerAnim;
+	protected GameObject 	player;
 
-	protected Health enemyHealth = new Health();
+	public static Health enemyHealth = new Health();
 
 	void Awake (){
-		player = GameObject.Find("Player");
-		anim 	   = GetComponent<Animator> ();
-		playerAnim = player.GetComponent<Animator>();
+		player 		= GameObject.Find("Player");
+		anim 	    = GetComponent<Animator> ();
+		SFX 		= GetComponent<AudioSource>();
+		playerAnim  = player.GetComponent<Animator>();
 	}
 
 	public void SetDamagedFlags(string side, string type, float damage){
@@ -56,6 +58,8 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 
 	protected void ReceiveDamage(float damage = 0){
+		SFX.pitch = Random.Range(0.9f, 1.7f);
+		SFX.Play();
 		enemyHealth.ApplyDamage(damage);		
 	}
 }
