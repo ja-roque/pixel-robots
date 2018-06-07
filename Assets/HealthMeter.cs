@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealthMeter : MonoBehaviour {
 
+	[SerializeField] private GameObject target;
+
 	Transform 	healthMask;
 	float 		healthScaleSize = 2f;
 	Health 		healthData;
@@ -11,10 +13,10 @@ public class HealthMeter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		healthMask = this.gameObject.transform.GetChild(0);
-		
-		if (this.gameObject.tag == "player"){
+
+		if (target.tag == "Player"){
 			healthData = PlayerDataManager.playerHealth;
-		} else if(this.gameObject.tag == "enemy"){
+		} else if(target.tag == "Enemy"){
 			Debug.Log("samsung");
 			healthData = EnemyBehavior.enemyHealth;
 		}
@@ -26,6 +28,6 @@ public class HealthMeter : MonoBehaviour {
 	}
 
 	void updateHealthBar(){
-		healthMask.localScale = new Vector3(healthScaleSize * (healthData.value/100f), 1, 1);
+		healthMask.localScale = new Vector3(1 * (healthData.value/100f), 1, 1);
 	}
 }
