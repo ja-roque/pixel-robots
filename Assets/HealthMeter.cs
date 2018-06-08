@@ -6,13 +6,16 @@ public class HealthMeter : MonoBehaviour {
 
 	[SerializeField] private GameObject target;
 
-	Transform 	healthMask;
-	float 		healthScaleSize = 2f;
+	RectTransform 	healthMask;
+	float 		healthScaleSizeX;
+	float 		healthScaleSizeY;
 	Health 		healthData;
 
 	// Use this for initialization
 	void Start () {
-		healthMask = this.gameObject.transform.GetChild(0);
+		healthMask = this.gameObject.transform.GetChild(0).GetComponent<RectTransform>();
+		healthScaleSizeX = healthMask.sizeDelta.x;
+		healthScaleSizeY = healthMask.sizeDelta.y;
 
 		if (target.tag == "Player"){
 			healthData = PlayerDataManager.playerHealth;
@@ -28,6 +31,6 @@ public class HealthMeter : MonoBehaviour {
 	}
 
 	void updateHealthBar(){
-		healthMask.localScale = new Vector3(1 * (healthData.value/100f), 1, 1);
+		healthMask.sizeDelta = new Vector2(healthScaleSizeX * (healthData.value/100f), healthScaleSizeY);
 	}
 }

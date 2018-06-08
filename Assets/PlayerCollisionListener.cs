@@ -14,16 +14,16 @@ public class PlayerCollisionListener : MonoBehaviour {
 		
 
 	void OnTriggerEnter (Collider col){
-		Debug.Log (this.gameObject.name);
+		Debug.Log (col);
 		if (!blocking) {
 			if (name == "head") {
 				//HITS HEAD
 				anim.Play ("HighDamage");
-				PlayerDataManager.playerHealth.ApplyDamage(0.90f);
+				PlayerDataManager.playerHealth.ApplyDamage(9.90f);
 			} else {
 				//HITS CHEST
 				anim.Play ("HighDamage");
-				PlayerDataManager.playerHealth.ApplyDamage(0.90f);
+				PlayerDataManager.playerHealth.ApplyDamage(7.90f);
 			}
 		} else {
 			anim.SetTrigger ("blockConfirm");

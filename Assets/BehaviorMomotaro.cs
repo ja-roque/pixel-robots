@@ -19,11 +19,10 @@ public class BehaviorMomotaro : EnemyBehavior {
 			string clipName = anim.GetCurrentAnimatorClipInfo (0) [0].clip.name;
 
 			if (clipName.ToLower ().Contains ("straight")) {
-				ReceiveDamage (0.2f);
-				ClearDamageFlags ();
-				Debug.Log(enemyHealth.value);
+				ReceiveDamage (damageWouldReceived);
+				ClearDamageFlags ();				
 			} else {
-				ReceiveDamage (0.8f);
+				ReceiveDamage (damageWouldReceived);
 				PlayDamageAnimation ();
 				ClearDamageFlags ();
 			}
@@ -54,7 +53,7 @@ public class BehaviorMomotaro : EnemyBehavior {
 		if(anim.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
 			return;
 	 
-	    if(Random.Range( 0.0f, 1.0f ) > 0.2f ){ 
+	    if(Random.Range( 0.0f, 1.0f ) > 0.1f ){ 
 	      Attack(); 
 	    } else{ 
 	      StayIdle(); 
