@@ -17,44 +17,47 @@ public class ActionListener : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		touch.Swipe();
+
+		if(PlayerDataManager.playerHealth.value > 0){
+			touch.Swipe();
 		
-		if (touch.Swipe().Type == "tap" && touch.Swipe().Side == "right"){
-			anim.SetTrigger("rightStraightPunch");
-        }
+			if (touch.Swipe().Type == "tap" && touch.Swipe().Side == "right"){
+				anim.SetTrigger("rightStraightPunch");
+			}
 
-		// if (Input.GetKeyDown("space")){
-		if (touch.Swipe().Type == "tap" && touch.Swipe().Side == "left"){
-			anim.SetTrigger("leftStraightPunch");
-        }
+			// if (Input.GetKeyDown("space")){
+			if (touch.Swipe().Type == "tap" && touch.Swipe().Side == "left"){
+				anim.SetTrigger("leftStraightPunch");
+			}
 
-        if (touch.Swipe().Type == "rightSwipe"){
-        	anim.SetTrigger("rightSideHook");
-        }
+			if (touch.Swipe().Type == "rightSwipe"){
+				anim.SetTrigger("rightSideHook");
+			}
 
-        if (touch.Swipe().Type == "leftSwipe"){
-        	anim.SetTrigger("leftSideHook");
-        }
+			if (touch.Swipe().Type == "leftSwipe"){
+				anim.SetTrigger("leftSideHook");
+			}
 
-        if (touch.Swipe().Type == "upSwipe" 
-        	&& touch.Swipe().Side == "right"){
-        	anim.SetTrigger("rightUppercut");
-        } else if(mouse.Swipe().Type == "upSwipe" 
-    		&& touch.Swipe().Side == "left") {
-        	anim.SetTrigger("leftUppercut");
-        }
+			if (touch.Swipe().Type == "upSwipe" 
+				&& touch.Swipe().Side == "right"){
+				anim.SetTrigger("rightUppercut");
+			} else if(mouse.Swipe().Type == "upSwipe" 
+				&& touch.Swipe().Side == "left") {
+				anim.SetTrigger("leftUppercut");
+			}
 
-		if (touch.Swipe().Type == "multiHoldTop"){
-					anim.SetBool("highBlock", true);
-		        } else{
-		        	anim.SetBool("highBlock", false);
-        }
+			if (touch.Swipe().Type == "multiHoldTop"){
+						anim.SetBool("highBlock", true);
+					} else{
+						anim.SetBool("highBlock", false);
+			}
 
-        if (touch.Swipe().Type == "multiHoldBot"){
-					anim.SetBool("lowBlock", true);
-		        } else{
-		        	anim.SetBool("lowBlock", false);
-        }
+			if (touch.Swipe().Type == "multiHoldBot"){
+						anim.SetBool("lowBlock", true);
+					} else{
+						anim.SetBool("lowBlock", false);
+			}
+		}
 	}
 
 }

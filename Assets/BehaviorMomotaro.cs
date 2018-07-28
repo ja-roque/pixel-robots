@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BehaviorMomotaro : EnemyBehavior {
 	Random rand = new Random();
-	public float health;
 	// Use this for initialization
 	void Start () {
 		InvokeRepeating("runBehavior", 3.0f, .50f);
@@ -12,7 +11,6 @@ public class BehaviorMomotaro : EnemyBehavior {
 	}
 
 	void Update(){
-		health = enemyHealth.value;
 
 		if (damageWouldReceived != 0) {
 
@@ -50,7 +48,7 @@ public class BehaviorMomotaro : EnemyBehavior {
 	}
 
 	void runBehavior(){
-		if(anim.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+		if(anim.GetCurrentAnimatorStateInfo(0).IsTag("attack")  || enemyHealth.value <= 0 || PlayerDataManager.playerHealth.value <= 0)
 			return;
 	 
 	    if(Random.Range( 0.0f, 1.0f ) > 0.1f ){ 

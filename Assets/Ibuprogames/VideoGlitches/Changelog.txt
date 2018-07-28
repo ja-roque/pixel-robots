@@ -1,0 +1,57 @@
+3.0
+--------------------------
+- Refactoring (see online documentation).
+- New effects: 'Broken camera', 'Color reduction', 'Radial aberration', 'VHS Noise'.
+- VR support (see online documentation).
+- Added Screen, Layer and Distance modes.
+- Mobile optimizations.
+- Added IsSupported() method to all effects.
+- 'VideoGlitchNoiseAnalog' more configurable.
+- Fixed compiler shader errors in PS4 (thanks Adam Simonar!).
+
+2.0
+--------------------------
+- New effect 'Broken screen'.
+
+1.8
+--------------------------
+- New effect 'Old VHS'.
+- Saturation control for all effects.
+- Improved documentation.
+- More configuration options in shaders.
+
+1.7
+--------------------------
+- New effect 'Corruption digital'.
+
+1.6
+--------------------------
+- New effect 'Old TV'.Colorfulness
+- Improved documentation.
+- Small improvements.
+
+1.5
+--------------------------
+- New effect 'VHS Pause'.
+
+1.4
+--------------------------
+- New effect 'Old Tape'.
+- Brightness, contrast and gamma controls
+  for all effects.
+
+1.3
+--------------------------
+- New effect 'Spectrum Offset'.
+
+1.2
+--------------------------
+- New effect 'RGB Display'.
+
+1.1
+--------------------------
+- New effect 'Black and White Distortion'.
+
+1.0
+--------------------------
+- Initial release.

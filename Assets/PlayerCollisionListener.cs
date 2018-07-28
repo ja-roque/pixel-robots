@@ -11,23 +11,27 @@ public class PlayerCollisionListener : MonoBehaviour {
 		anim = GetComponentInParent<Animator>();
 
 	}
-		
 
 	void OnTriggerEnter (Collider col){
 		Debug.Log (col);
 		if (!blocking) {
+			anim.Play ("HighDamage");
 			if (name == "head") {
 				//HITS HEAD
-				anim.Play ("HighDamage");
 				PlayerDataManager.playerHealth.ApplyDamage(9.90f);
 			} else {
 				//HITS CHEST
-				anim.Play ("HighDamage");
 				PlayerDataManager.playerHealth.ApplyDamage(7.90f);
 			}
+
+			if(PlayerDataManager.playerHealth.value <= 0){
+				//LOSE
+				
+			}
+
 		} else {
 			anim.SetTrigger ("blockConfirm");
-			Debug.Log ("blocked!");
+			// Debug.Log ("blocked!");
 		}
 	}
 }
