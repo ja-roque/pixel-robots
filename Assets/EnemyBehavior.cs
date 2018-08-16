@@ -60,6 +60,11 @@ public class EnemyBehavior : MonoBehaviour {
 	protected void ReceiveDamage(float damage = 0){
 		SFX.pitch = Random.Range(0.9f, 1.7f);
 		SFX.Play();
-		enemyHealth.ApplyDamage(damage);		
+		enemyHealth.ApplyDamage(damage);
+
+		if(enemyHealth.value <= 0){
+			//WIN
+			// UIButtonHandler.Show();				
+		}
 	}
 }

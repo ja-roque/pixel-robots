@@ -17,4 +17,8 @@ public class Health {
 		return this.value;
 	}
 
+	public void ResetHealth(float value = 100f){
+		this.value = value;
+	}
+
 }
